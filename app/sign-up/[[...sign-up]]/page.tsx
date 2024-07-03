@@ -1,11 +1,14 @@
 import { SignUp } from "@clerk/nextjs"
+import { Metadata } from "next"
 
-const Page = () => {
+export const metadata: Metadata = {
+  title: "FlowBrain - Sign Up",
+}
+
+export default function SignUpPage() {
   return (
-    <div className="flex items-center justify-center h-screen w-full">
+    <div className="flex h-screen items-center justify-center">
       <SignUp appearance={{ variables: { colorPrimary: "#0F172A" } }} />
     </div>
   )
 }
-
-export default Page

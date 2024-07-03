@@ -1,12 +1,15 @@
 "use client"
 
+import AddNoteDialog from "@/components/AddNoteDialog"
 import { Button } from "@/components/ui/button"
 import { UserButton } from "@clerk/nextjs"
 import { Plus } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 
 export default function NavBar() {
+  const [showAddNoteModal, setShowAddNoteModal] = useState(false)
   return (
     <>
       <div className="p-4 shadow">
@@ -27,13 +30,14 @@ export default function NavBar() {
                 elements: { avatarBox: { width: "2.5rem", height: "2.5rem" } },
               }}
             />
-            <Button>
+            <Button onClick={() => setShowAddNoteModal(true)}>
               <Plus size={20} className="mr-2" />
               Add Note
             </Button>
           </div>
         </div>
       </div>
+      <AddNoteDialog open={showAddNoteModal} setOpen={setShowAddNoteModal} />
     </>
   )
 }
